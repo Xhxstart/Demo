@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>DemoSpring</display-name>
+	 <!-- 配置Spring MVC DispatcherServlet -->
+  <servlet> 
+    <servlet-name>MVC</servlet-name> 
+    <servlet-class>com.springedu.servlet.XhxDispatcherServlet</servlet-class> 
+    <!-- 初始化参数 找到哦欸之文件所在路径 -->
+    <init-param> 
+      <!-- 加载SpringMVC的xml到 spring的上下文容器中 
+        这里由于第一步中配置的servlet中init-param所需要加载的格式为：mvc*.* 
+  	就是去寻找为mvc开头的文件所以创建SpringMVC的xml文件时必须要有mvc开头 
+      -->
+      <param-name>contextConfigLocation</param-name>
+      <param-value> 
+        /WEB-INF/application.properties
+      </param-value> 
+    </init-param> 
+    <load-on-startup>1</load-on-startup> 
+  </servlet> 
+  
+  <!-- 配置DispatcherServlet所需要拦截的 url  -->
+  <servlet-mapping> 
+    <servlet-name>MVC</servlet-name> 
+    <url-pattern>/*</url-pattern> 
+  </servlet-mapping> 
+</web-app>
